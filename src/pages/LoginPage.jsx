@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import loginImage from '../assets/images/15164857.gif';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -15,6 +16,9 @@ const LoginPage = () => {
     <section className="bg-emerald-50">
       <div className="container m-auto max-w-md py-24">
         <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+          <div className="flex justify-center mb-4">
+            <img src={loginImage} alt="Login" className="w-32" />
+          </div>
           <form onSubmit={handleLogin}>
             <h2 className="text-3xl text-center font-semibold mb-6">Login</h2>
 
