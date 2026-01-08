@@ -4,40 +4,23 @@ import logo from '../assets/images/logo.png';
 const Navbar = () => {
   const linkClass = ({ isActive }) =>
     isActive
-<<<<<<< HEAD
-      ? 'bg-black text-blue-200 rounded-md px-3 py-2'
-      : 'text-white hover:bg-gray-700 rounded-md px-3 py-2';
+      ? 'bg-indigo-200 text-white shadow-lg shadow-indigo-500/30 rounded-lg px-4 py-2 transition-all duration-300 transform scale-105'
+      : 'text-gray-100 hover:bg-white/10 hover:text-white rounded-lg px-4 py-2 transition-all duration-300';
 
   return (
-    <nav className='bg-blue-100 border-b border-red-200'>
-=======
-      ? 'bg-black text-white rounded-md px-3 py-2'
-      : 'text-white hover:bg-gray-700 rounded-md px-3 py-2';
-
-  return (
-    <nav className='bg-blue-700 border-b border-red-200'>
->>>>>>> 3eb56b7a21fb0a81c773b08395c0c8943fecf39a
+    <nav className='sticky top-0 z-50 bg-gradient-to-r from-gray-300 via--white to-gray-600 backdrop-blur-md bg-opacity-20 border-b border-white/10 shadow-xl'>
       <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
         <div className='flex h-20 items-center justify-between'>
           <div className='flex flex-1 items-center justify-center md:items-stretch md:justify-start'>
             <NavLink className='flex flex-shrink-0 items-center mr-4' to='/'>
               <img className='h-10 w-auto' src={logo} alt='JobTrack Pro' />
-<<<<<<< HEAD
-              <span className='hidden md:block text-black text-2xl font-bold ml-2'>
-=======
               <span className='hidden md:block text-white text-2xl font-bold ml-2'>
->>>>>>> 3eb56b7a21fb0a81c773b08395c0c8943fecf39a
                 JobTrack Pro
               </span>
             </NavLink>
             <div className='md:ml-auto'>
-<<<<<<< HEAD
-              <div className='flex space-x-2 '>
-                <NavLink to='/' className={linkClass} >
-=======
               <div className='flex space-x-2'>
                 <NavLink to='/' className={linkClass}>
->>>>>>> 3eb56b7a21fb0a81c773b08395c0c8943fecf39a
                   Home
                 </NavLink>
                 <NavLink to='/jobs' className={linkClass}>
@@ -57,4 +40,5 @@ const Navbar = () => {
     </nav>
   );
 };
+
 export default Navbar;

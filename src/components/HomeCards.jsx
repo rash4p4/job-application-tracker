@@ -18,7 +18,7 @@ const HomeCards = () => {
               View Applications
             </Link>
           </Card>
-          <Card bg='bg-emerald-100'>
+          <Card bg='bg-gray-300'>
             <h2 className='text-2xl font-bold'>Add New Application</h2>
             <p className='mt-2 mb-4'>
               Record a new job application with company details, position, and application status

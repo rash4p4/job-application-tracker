@@ -1,9 +1,5 @@
 import PropTypes from 'prop-types';
-<<<<<<< HEAD
 import jobPortalImage from '../assets/images/hero_bg.png';
-=======
-import jobPortalImage from '../assets/images/OIP.webp';
->>>>>>> 3eb56b7a21fb0a81c773b08395c0c8943fecf39a
 
 const Hero = ({
   title = 'Track Your Job Applications',
