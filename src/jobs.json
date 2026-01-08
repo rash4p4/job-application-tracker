@@ -83,6 +83,7 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
+<<<<<<< HEAD
     },
     {
       "id": "72d5",
@@ -97,6 +98,8 @@
         "contactEmail": "mine@gmail.com",
         "contactPhone": "9124567889"
       }
+=======
+>>>>>>> 3eb56b7a21fb0a81c773b08395c0c8943fecf39a
     }
   ]
 }
