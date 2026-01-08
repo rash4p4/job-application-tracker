@@ -175,7 +175,7 @@ const AddJobPage = ({ addJobSubmit }) => {
   };
 
   return (
-    <section className='bg-emerald-50'>
+    <section className='bg-slate-50'>
       <div className='container m-auto max-w-2xl py-24'>
         <div className='bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0'>
           <form onSubmit={submitForm}>
@@ -208,9 +208,8 @@ const AddJobPage = ({ addJobSubmit }) => {
                 type='text'
                 id='title'
                 name='title'
-                className={`border rounded w-full py-2 px-3 mb-2 ${
-                  errors.title ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`border rounded w-full py-2 px-3 mb-2 ${errors.title ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 placeholder='e.g. Senior React Developer'
                 value={title}
                 onChange={handleTitleChange}
@@ -227,9 +226,8 @@ const AddJobPage = ({ addJobSubmit }) => {
               <textarea
                 id='description'
                 name='description'
-                className={`border rounded w-full py-2 px-3 ${
-                  errors.description ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`border rounded w-full py-2 px-3 ${errors.description ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 rows='4'
                 placeholder='Add any job duties, expectations, requirements, etc'
                 value={description}
@@ -274,9 +272,8 @@ const AddJobPage = ({ addJobSubmit }) => {
                 type='text'
                 id='location'
                 name='location'
-                className={`border rounded w-full py-2 px-3 mb-2 ${
-                  errors.location ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`border rounded w-full py-2 px-3 mb-2 ${errors.location ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 placeholder='e.g. Boston, MA or Remote'
                 value={location}
                 onChange={handleLocationChange}
@@ -296,9 +293,8 @@ const AddJobPage = ({ addJobSubmit }) => {
                 type='text'
                 id='company'
                 name='company'
-                className={`border rounded w-full py-2 px-3 ${
-                  errors.companyName ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`border rounded w-full py-2 px-3 ${errors.companyName ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 placeholder='Company Name'
                 value={companyName}
                 onChange={handleCompanyNameChange}
@@ -334,9 +330,8 @@ const AddJobPage = ({ addJobSubmit }) => {
                 type='email'
                 id='contact_email'
                 name='contact_email'
-                className={`border rounded w-full py-2 px-3 ${
-                  errors.contactEmail ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`border rounded w-full py-2 px-3 ${errors.contactEmail ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 placeholder='your.email@example.com'
                 value={contactEmail}
                 onChange={handleEmailChange}
@@ -354,9 +349,8 @@ const AddJobPage = ({ addJobSubmit }) => {
                 type='tel'
                 id='contact_phone'
                 name='contact_phone'
-                className={`border rounded w-full py-2 px-3 ${
-                  errors.contactPhone ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`border rounded w-full py-2 px-3 ${errors.contactPhone ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 placeholder='(91+) 123-456-789-0'
                 value={contactPhone}
                 onChange={handlePhoneChange}
@@ -368,7 +362,7 @@ const AddJobPage = ({ addJobSubmit }) => {
 
             <div>
               <button
-                className='bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline'
+                className='bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline transition-colors shadow-lg shadow-indigo-200'
                 type='submit'
               >
                 Add Application

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import Card from './Card';
+import { useAuth } from '../context/AuthContext';
 
 const HomeCards = () => {
+  const { isAuthenticated } = useAuth();
   return (
     <section className='py-4'>
       <div className='container-xl lg:container m-auto'>
@@ -18,18 +20,20 @@ const HomeCards = () => {
               View Applications
             </Link>
           </Card>
-          <Card bg='bg-gray-300'>
-            <h2 className='text-2xl font-bold'>Add New Application</h2>
-            <p className='mt-2 mb-4'>
-              Record a new job application with company details, position, and application status
-            </p>
-            <Link
-              to='/add-job'
-              className='inline-block bg-blue-400 text-white rounded-lg px-4 py-2 hover:bg-emerald-600'
-            >
-              Add Application
-            </Link>
-          </Card>
+          {isAuthenticated && (
+            <Card bg='bg-indigo-50 shadow-sm border border-indigo-100'>
+              <h2 className='text-2xl font-bold text-indigo-900'>Add New Application</h2>
+              <p className='mt-2 mb-4 text-indigo-700'>
+                Record a new job application with company details, position, and application status
+              </p>
+              <Link
+                to='/add-job'
+                className='inline-block bg-indigo-600 text-white rounded-lg px-4 py-2 hover:bg-indigo-700 transition-colors shadow-md shadow-indigo-200'
+              >
+                Add Application
+              </Link>
+            </Card>
+          )}
         </div>
       </div>
     </section>

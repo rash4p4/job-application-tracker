@@ -1,19 +1,29 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { toast } from 'react-toastify';
 import loginImage from '../assets/images/15164857.gif';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Logging in with:', { email, password });
+    const success = login(email, password);
+    if (success) {
+      toast.success('Logged in successfully');
+      navigate('/');
+    } else {
+      toast.error('Invalid email or password');
+    }
   };
 
   return (
-    <section className="bg-emerald-50">
+    <section className="bg-slate-50">
       <div className="container m-auto max-w-md py-24">
         <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
           <div className="flex justify-center mb-4">
@@ -52,14 +62,14 @@ const LoginPage = () => {
 
             <div>
               <button
-                className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline transition-colors shadow-lg shadow-indigo-200"
                 type="submit"
               >
                 Login
               </button>
             </div>
             <div className="text-center mt-4">
-              <Link to="/create-account" className="text-emerald-500 hover:text-emerald-700">
+              <Link to="/create-account" className="text-indigo-600 hover:text-indigo-800">
                 Create an Account
               </Link>
             </div>

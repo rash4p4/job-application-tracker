@@ -1,39 +1,54 @@
-import { NavLink } from 'react-router-dom';
-import logo from '../assets/images/logo.png';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { toast } from 'react-toastify';
+import logo from '../assets/images/reo.png';
 
 const Navbar = () => {
+  const { isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
+
   const linkClass = ({ isActive }) =>
     isActive
-      ? 'bg-indigo-200 text-white shadow-lg shadow-indigo-500/30 rounded-lg px-4 py-2 transition-all duration-300 transform scale-105'
+      ? 'text-white shadow-lg shadow-gray-900 rounded-lg px-4 py-2 transition-all duration-300 transform scale-105'
       : 'text-gray-100 hover:bg-white/10 hover:text-white rounded-lg px-4 py-2 transition-all duration-300';
 
+  const onLogoutClick = () => {
+    logout();
+    toast.success('Logged out successfully');
+    navigate('/');
+  };
+
   return (
-    <nav className='sticky top-0 z-50 bg-gradient-to-r from-gray-300 via--white to-gray-600 backdrop-blur-md bg-opacity-20 border-b border-white/10 shadow-xl'>
+    <nav className='sticky top-0 z-50 bg-gradient-to-r from-gray-200 via-gray-400 to-gray-700 backdrop-blur-md bg-opacity-20 border-b border-white/10 shadow-xl'>
       <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
         <div className='flex h-20 items-center justify-between'>
-          <div className='flex flex-1 items-center justify-center md:items-stretch md:justify-start'>
-            <NavLink className='flex flex-shrink-0 items-center mr-4' to='/'>
-              <img className='h-10 w-auto' src={logo} alt='JobTrack Pro' />
-              <span className='hidden md:block text-white text-2xl font-bold ml-2'>
-                JobTrack Pro
-              </span>
+          <NavLink className='flex items-center' to='/'>
+            <img className='h-12 w-auto' src={logo} alt='JobTrack Pro' />
+            <span className='ml-2 text-white text-2xl font-bold hidden md:block'>
+              JobTrack Pro
+            </span>
+          </NavLink>
+          <div className='flex items-center space-x-4'>
+            <NavLink to='/' className={linkClass}>
+              Home
             </NavLink>
-            <div className='md:ml-auto'>
-              <div className='flex space-x-2'>
-                <NavLink to='/' className={linkClass}>
-                  Home
-                </NavLink>
-                <NavLink to='/jobs' className={linkClass}>
-                  Applications
-                </NavLink>
-                <NavLink to='/add-job' className={linkClass}>
-                  Add Application
-                </NavLink>
-                <NavLink to='/login' className={linkClass}>
-                  Login
-                </NavLink>
-              </div>
-            </div>
+            <NavLink to='/jobs' className={linkClass}>
+              Applications
+            </NavLink>
+            {isAuthenticated && (
+              <NavLink to='/add-job' className={linkClass}>
+                Add Application
+              </NavLink>
+            )}
+            {isAuthenticated ? (
+              <button onClick={onLogoutClick} className={linkClass}>
+                Logout
+              </button>
+            ) : (
+              <NavLink to='/login' className={linkClass}>
+                Login
+              </NavLink>
+            )}
           </div>
         </div>
       </div>

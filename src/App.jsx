@@ -13,6 +13,13 @@ import AddJobPage from './pages/AddJobPage';
 import EditJobPage from './pages/EditJobPage';
 import LoginPage from './pages/LoginPage';
 import CreateAccountPage from './pages/CreateAccountPage';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { Navigate } from 'react-router-dom';
+
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? children : <Navigate to='/login' />;
+};
 
 const App = () => {
   // Add New Job
@@ -52,10 +59,21 @@ const App = () => {
       <Route path='/' element={<MainLayout />}>
         <Route index element={<HomePage />} />
         <Route path='/jobs' element={<JobsPage />} />
-        <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} />
+        <Route
+          path='/add-job'
+          element={
+            <ProtectedRoute>
+              <AddJobPage addJobSubmit={addJob} />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path='/edit-job/:id'
-          element={<EditJobPage updateJobSubmit={updateJob} />}
+          element={
+            <ProtectedRoute>
+              <EditJobPage updateJobSubmit={updateJob} />
+            </ProtectedRoute>
+          }
           loader={jobLoader}
         />
         <Route
@@ -70,6 +88,10 @@ const App = () => {
     )
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 };
 export default App;
